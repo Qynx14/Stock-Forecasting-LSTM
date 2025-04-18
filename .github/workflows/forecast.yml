@@ -1,0 +1,22 @@
+name: Weekly Stock Forecast
+
+on:
+  schedule:
+    - cron: '0 1 * * 0'  # ทุกวันอาทิตย์ 01:00 UTC = 08:00 เวลาไทย
+  workflow_dispatch:
+
+jobs:
+  forecast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run Forecast Script
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python forecast.py
