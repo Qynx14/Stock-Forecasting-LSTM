@@ -19,7 +19,7 @@ WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
 def download_data(ticker):
     end = dt.datetime.now()
-    start = end - dt.timedelta(days=365*5)
+    start = end - dt.timedelta(days=365*2)
     df = yf.download(ticker, start=start, end=end)
     df = df[["Close"]].dropna()
     return df
