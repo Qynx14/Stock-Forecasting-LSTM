@@ -1,7 +1,8 @@
+yfinance
 pandas
 numpy
-yfinance
 scikit-learn
-tensorflow
 matplotlib
+tensorflow
 requests
+ta
